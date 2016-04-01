@@ -5,7 +5,7 @@
 %define plugin_source_dir contrib/%{plugin_name}
 
 Name:           solr-%{plugin_name}
-Version:        5.4.1
+Version:        5.4.1-1
 Release:        0%{?dist}
 Summary:        A distributed, highly available, RESTful search engine
 
@@ -55,6 +55,9 @@ rm -rf $RPM_BUILD_ROOT
 %doc contrib/morphlines-cell/README.txt
 
 %changelog
+* Fri Apr 1 2016 Erin Fahy <efahy@stanford.edu> - 5.4.1-1
+- Fix for logrotate and drop the console log
+
 * Mon Jan 25 2016 Chris Beer <chris@cbeer.info> - 5.4.1-0
 - Update to Solr 5.4.1
 
