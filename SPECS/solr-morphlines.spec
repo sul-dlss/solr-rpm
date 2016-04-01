@@ -5,8 +5,8 @@
 %define plugin_source_dir contrib/%{plugin_name}
 
 Name:           solr-%{plugin_name}
-Version:        5.4.1-1
-Release:        0%{?dist}
+Version:        5.4.1
+Release:        1%{?dist}
 Summary:        A distributed, highly available, RESTful search engine
 
 Group:          System Environment/Daemons
