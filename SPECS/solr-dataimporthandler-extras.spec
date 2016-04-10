@@ -5,8 +5,8 @@
 %define plugin_source_dir contrib/%{plugin_name}
 
 Name:           solr-%{plugin_name}
-Version:        5.4.1
-Release:        1%{?dist}
+Version:        6.0.0
+Release:        0%{?dist}
 Summary:        A distributed, highly available, RESTful search engine
 
 Group:          System Environment/Daemons
@@ -48,6 +48,9 @@ rm -rf $RPM_BUILD_ROOT
 %docdir %{solr_install_dir}/docs/solr-%{plugin_name}
 
 %changelog
+* Sat Apr 9 2016 Chris Beer <chris@cbeer.info> - 6.0.0-0
+- Update to Solr 6.0.0
+
 * Fri Apr 1 2016 Erin Fahy <efahy@stanford.edu> - 5.4.1-1
 - Fix for logrotate and drop the console log
 
