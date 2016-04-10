@@ -51,63 +51,63 @@ rm -rf $RPM_BUILD_ROOT
 %{__install} -p -m 644 bin/solr.in.sh %{buildroot}%{base_install_dir}/bin
 
 # contrib
-%{__mkdir} -p %{buildroot}%{_javadir}/%{name}/contrib
+%{__mkdir} -p %{buildroot}%{base_install_dir}/contrib
 
 # licenses
-%{__mkdir} -p %{buildroot}%{_javadir}/%{name}/licenses
+%{__mkdir} -p %{buildroot}%{base_install_dir}/licenses
 %{__install} -p -m 644 licenses/* %{buildroot}%{base_install_dir}/licenses
 
 #libs
-%{__mkdir} -p %{buildroot}%{_javadir}/%{name}/dist
+%{__mkdir} -p %{buildroot}%{base_install_dir}/dist
 %{__install} -p -m 644 dist/solr-analytics-*.jar %{buildroot}%{base_install_dir}/dist
 %{__install} -p -m 644 dist/solr-cell-*.jar %{buildroot}%{base_install_dir}/dist
 %{__install} -p -m 644 dist/solr-dataimporthandler-%{version}.jar %{buildroot}%{base_install_dir}/dist
 %{__install} -p -m 644 dist/solr-core-*.jar %{buildroot}%{base_install_dir}/dist
 
 # server libs
-%{__mkdir} -p %{buildroot}%{_javadir}/%{name}/server
+%{__mkdir} -p %{buildroot}%{base_install_dir}/server
 %{__install} -p -m 644 server/*.jar %{buildroot}%{base_install_dir}/server
 
-%{__mkdir} -p %{buildroot}%{_javadir}/%{name}/server/contexts
+%{__mkdir} -p %{buildroot}%{base_install_dir}/server/contexts
 %{__install} -p -m 644 server/contexts/*.xml %{buildroot}%{base_install_dir}/server/contexts
 
-%{__mkdir} -p %{buildroot}%{_javadir}/%{name}/server/etc
+%{__mkdir} -p %{buildroot}%{base_install_dir}/server/etc
 %{__install} -p -m 644 server/etc/*.xml %{buildroot}%{base_install_dir}/server/etc
 
-%{__mkdir} -p %{buildroot}%{_javadir}/%{name}/server/lib
+%{__mkdir} -p %{buildroot}%{base_install_dir}/server/lib
 %{__install} -p -m 644 server/lib/*.jar %{buildroot}%{base_install_dir}/server/lib
 
-%{__mkdir} -p %{buildroot}%{_javadir}/%{name}/server/lib/ext
+%{__mkdir} -p %{buildroot}%{base_install_dir}/server/lib/ext
 %{__install} -p -m 644 server/lib/ext/*.jar %{buildroot}%{base_install_dir}/server/lib/ext
 
-%{__mkdir} -p %{buildroot}%{_javadir}/%{name}/server/modules
+%{__mkdir} -p %{buildroot}%{base_install_dir}/server/modules
 %{__install} -p -m 644 server/modules/*.mod %{buildroot}%{base_install_dir}/server/modules
 
-%{__mkdir} -p %{buildroot}%{_javadir}/%{name}/server/resources
+%{__mkdir} -p %{buildroot}%{base_install_dir}/server/resources
 
-%{__mkdir} -p %{buildroot}%{_javadir}/%{name}/server/scripts/cloud-scripts
+%{__mkdir} -p %{buildroot}%{base_install_dir}/server/scripts/cloud-scripts
 %{__install} -p -m 755 server/scripts/cloud-scripts/* %{buildroot}%{base_install_dir}/server/scripts/cloud-scripts
 
 # webapp
 
-%{__mkdir} -p %{buildroot}%{_javadir}/%{name}/server/solr-webapp/webapp
+%{__mkdir} -p %{buildroot}%{base_install_dir}/server/solr-webapp/webapp
 %{__cp} -R -p server/solr-webapp/webapp/* %{buildroot}%{base_install_dir}/server/solr-webapp/webapp
 
 # config
 %{__mkdir} -p %{buildroot}%{_sysconfdir}/solr
-%{__install} -p -m 644 server/solr/README.txt %{buildroot}%{_sysconfdir}/solr
-%{__install} -p -m 644 server/solr/solr.xml %{buildroot}%{_sysconfdir}/solr
-%{__install} -p -m 644 server/solr/zoo.cfg %{buildroot}%{_sysconfdir}/solr
-%{__install} -p -m 644 server/resources/log4j.properties %{buildroot}%{_sysconfdir}/solr
-ln -sf %{_sysconfdir}/solr/log4j.properties %{buildroot}%{base_install_dir}/server/resources/log4j.properties
+%{__install} -p -m 644 server/solr/README.txt %{buildroot}%{_sysconfdir}/%{name}
+%{__install} -p -m 644 server/solr/solr.xml %{buildroot}%{_sysconfdir}/%{name}
+%{__install} -p -m 644 server/solr/zoo.cfg %{buildroot}%{_sysconfdir}/%{name}
+%{__install} -p -m 644 server/resources/log4j.properties %{buildroot}%{_sysconfdir}/%{name}
+ln -sf %{_sysconfdir}/%{name}/log4j.properties %{buildroot}%{base_install_dir}/server/resources/log4j.properties
 
-%{__install} -p -m 644 server/resources/jetty-logging.properties %{buildroot}%{_sysconfdir}/solr
-ln -sf %{_sysconfdir}/solr/jetty-logging.properties %{buildroot}%{base_install_dir}/server/resources/jetty-logging.properties
+%{__install} -p -m 644 server/resources/jetty-logging.properties %{buildroot}%{_sysconfdir}/%{name}
+ln -sf %{_sysconfdir}/%{name}/jetty-logging.properties %{buildroot}%{base_install_dir}/server/resources/jetty-logging.properties
 
 # docs
-%{__mkdir} -p %{buildroot}%{_javadir}/%{name}/docs/solr-core
-%{__mkdir} -p %{buildroot}%{_javadir}/%{name}/docs/images
-%{__mkdir} -p %{buildroot}%{_javadir}/%{name}/docs/changes
+%{__mkdir} -p %{buildroot}%{base_install_dir}/docs/solr-core
+%{__mkdir} -p %{buildroot}%{base_install_dir}/docs/images
+%{__mkdir} -p %{buildroot}%{base_install_dir}/docs/changes
 %{__install} -p -m 644 docs/*.html %{buildroot}%{base_install_dir}/docs
 %{__install} -p -m 644 docs/images/* %{buildroot}%{base_install_dir}/docs/images
 %{__install} -p -m 644 docs/changes/* %{buildroot}%{base_install_dir}/docs/changes
@@ -116,35 +116,35 @@ ln -sf %{_sysconfdir}/solr/jetty-logging.properties %{buildroot}%{base_install_d
 # data
 %{__mkdir} -p %{buildroot}%{_localstatedir}/lib/%{name}
 %{__mkdir} -p %{buildroot}%{_localstatedir}/lib/%{name}/lib
-ln -sf %{_sysconfdir}/solr/solr.xml %{buildroot}%{_localstatedir}/lib/%{name}/solr.xml
+ln -sf %{_sysconfdir}/%{name}/solr.xml %{buildroot}%{_localstatedir}/lib/%{name}/solr.xml
 
 # logs
 %{__mkdir} -p %{buildroot}%{_localstatedir}/log/%{name}
 ln -sf %{_localstatedir}/log/%{name} %{buildroot}%{base_install_dir}/server/logs
 
 # plugins
-%{__mkdir} -p %{buildroot}%{_javadir}/%{name}/plugins
+%{__mkdir} -p %{buildroot}%{base_install_dir}/plugins
 
 # sysconfig and init
 %{__mkdir} -p %{buildroot}%{_sysconfdir}/rc.d/init.d
 %{__mkdir} -p %{buildroot}%{_sysconfdir}/sysconfig
-%{__install} -m 755 %{SOURCE1} %{buildroot}%{_sysconfdir}/rc.d/init.d/solr
-%{__install} -m 755 %{SOURCE2} %{buildroot}%{_sysconfdir}/sysconfig/solr
+%{__install} -m 755 %{SOURCE1} %{buildroot}%{_sysconfdir}/rc.d/init.d/%{name}
+%{__install} -m 755 %{SOURCE2} %{buildroot}%{_sysconfdir}/sysconfig/%{name}
 
-%{__mkdir} -p %{buildroot}%{_localstatedir}/run/solr
-%{__mkdir} -p %{buildroot}%{_localstatedir}/lock/subsys/solr
+%{__mkdir} -p %{buildroot}%{_localstatedir}/run/%{name}
+%{__mkdir} -p %{buildroot}%{_localstatedir}/lock/subsys/%{name}
 
 %pre
 getent group %{solr_group} >/dev/null || groupadd -r %{solr_group}
 getent passwd %{solr_user} >/dev/null || /usr/sbin/useradd --comment "Solr Daemon User" --shell /sbin/nologin -M -r -g %{solr_group} --home %{base_install_dir} %{solr_user}
 
 %post
-/sbin/chkconfig --add solr
+/sbin/chkconfig --add %{name}
 
 %preun
 if [ $1 -eq 0 ]; then
-  /sbin/service solr stop >/dev/null 2>&1
-  /sbin/chkconfig --del solr
+  /sbin/service %{name} stop >/dev/null 2>&1
+  /sbin/chkconfig --del %{name}
 fi
 
 %clean
@@ -152,25 +152,25 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(-,root,root,-)
-%{_sysconfdir}/rc.d/init.d/solr
-%config(noreplace) %{_sysconfdir}/sysconfig/solr
-%dir %{_javadir}/solr
-%{_javadir}/solr/bin/*
-%{_javadir}/solr/dist/*
-%{_javadir}/solr/docs/*
-%docdir %{_javadir}/%{name}/docs/solr-core
-%{_javadir}/solr/licenses/*
-%docdir %{_javadir}/%{name}/licenses
-%{_javadir}/solr/server/*
-%dir %{_javadir}/solr/plugins
-%config(noreplace) %{_sysconfdir}/solr
+%{_sysconfdir}/rc.d/init.d/%{name}
+%config(noreplace) %{_sysconfdir}/sysconfig/%{name}
+%dir %{base_install_dir}
+%{base_install_dir}/bin/*
+%{base_install_dir}/dist/*
+%{base_install_dir}/docs/*
+%docdir %{base_install_dir}/docs/solr-core
+%{base_install_dir}/licenses/*
+%docdir %{base_install_dir}/licenses
+%{base_install_dir}/server/*
+%dir %{base_install_dir}/plugins
+%config(noreplace) %{_sysconfdir}/%{name}
 %doc README.txt LICENSE.txt  NOTICE.txt  CHANGES.txt docs/*
-%defattr(-,solr,solr,-)
-%dir %{_localstatedir}/lib/solr
-%{_localstatedir}/lib/solr/solr.xml
-%dir %{_localstatedir}/lib/solr/lib
-%{_localstatedir}/run/solr
-%dir %{_localstatedir}/log/solr
+%defattr(-,%{solr_user},%{solr_group},-)
+%dir %{_localstatedir}/lib/%{name}
+%{_localstatedir}/lib/%{name}/solr.xml
+%dir %{_localstatedir}/lib/%{name}/lib
+%{_localstatedir}/run/%{name}
+%dir %{_localstatedir}/log/%{name}
 
 
 %changelog
