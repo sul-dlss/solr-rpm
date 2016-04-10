@@ -158,9 +158,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_javadir}/solr/bin/*
 %{_javadir}/solr/dist/*
 %{_javadir}/solr/docs/*
-%docdir %{solr_install_dir}/docs/solr-core
+%docdir %{_javadir}/%{name}/docs/solr-core
 %{_javadir}/solr/licenses/*
-%docdir %{solr_install_dir}/licenses
+%docdir %{_javadir}/%{name}/licenses
 %{_javadir}/solr/server/*
 %dir %{_javadir}/solr/plugins
 %config(noreplace) %{_sysconfdir}/solr
