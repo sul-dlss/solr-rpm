@@ -54,7 +54,7 @@ rm -rf $RPM_BUILD_ROOT
 * Mon Jan 25 2016 Chris Beer <chris@cbeer.info> - 5.4.1-0
 - Update to Solr 5.4.1
 
-* Sat Dec 15 2015 Chris Beer <chris@cbeer.info> - 5.4.0-0
+* Tue Dec 15 2015 Chris Beer <chris@cbeer.info> - 5.4.0-0
 - Update to Solr 5.4.0
 
 * Sat Sep 26 2015 Chris Beer <chris@cbeer.info> - 5.3.1-0
