@@ -5,7 +5,7 @@
 %define plugin_source_dir contrib/%{plugin_name}
 
 Name:           solr-%{plugin_name}
-Version:        6.0.0
+Version:        6.1.0
 Release:        0%{?dist}
 Summary:        A distributed, highly available, RESTful search engine
 
@@ -55,6 +55,9 @@ rm -rf $RPM_BUILD_ROOT
 %doc contrib/morphlines-cell/README.txt
 
 %changelog
+* Wed Jun 29 2016 Chris Beer <chris@cbeer.info> - 6.1.0-0
+- Update to Solr 6.1.0
+
 * Sat Apr 9 2016 Chris Beer <chris@cbeer.info> - 6.0.0-0
 - Update to Solr 6.0.0
 
