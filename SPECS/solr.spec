@@ -4,7 +4,7 @@
 %define solr_user solr
 
 Name:           solr
-Version:        6.1.0
+Version:        6.2.1
 Release:        0%{?dist}
 Summary:        A distributed, highly available, RESTful search engine
 
@@ -174,6 +174,10 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+
+* Mon Sep 26 2016 Chris Beer <chris@cbeer.info> - 6.2.1-0
+- Update to Solr 6.2.1
+
 * Wed Jun 29 2016 Chris Beer <chris@cbeer.info> - 6.1.0-0
 - Update to Solr 6.1.0
 
