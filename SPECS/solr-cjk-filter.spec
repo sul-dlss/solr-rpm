@@ -39,4 +39,3 @@ rm -rf $RPM_BUILD_ROOT
 %changelog
 * Fri Aug 5 2016 Chris Beer <chris@cbeer.info> - 1.0.5
 - Package v1.0.5
-
