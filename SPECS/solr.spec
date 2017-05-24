@@ -104,15 +104,6 @@ ln -sf %{_sysconfdir}/%{name}/log4j.properties %{buildroot}%{base_install_dir}/s
 %{__install} -p -m 644 server/resources/jetty-logging.properties %{buildroot}%{_sysconfdir}/%{name}
 ln -sf %{_sysconfdir}/%{name}/jetty-logging.properties %{buildroot}%{base_install_dir}/server/resources/jetty-logging.properties
 
-# docs
-%{__mkdir} -p %{buildroot}%{base_install_dir}/docs/solr-core
-%{__mkdir} -p %{buildroot}%{base_install_dir}/docs/images
-%{__mkdir} -p %{buildroot}%{base_install_dir}/docs/changes
-%{__install} -p -m 644 docs/*.html %{buildroot}%{base_install_dir}/docs
-%{__install} -p -m 644 docs/images/* %{buildroot}%{base_install_dir}/docs/images
-%{__install} -p -m 644 docs/changes/* %{buildroot}%{base_install_dir}/docs/changes
-%{__cp} -R -p docs/solr-core/* %{buildroot}%{base_install_dir}/docs/solr-core
-
 # data
 %{__mkdir} -p %{buildroot}%{_localstatedir}/lib/%{name}
 %{__mkdir} -p %{buildroot}%{_localstatedir}/lib/%{name}/lib
@@ -157,14 +148,12 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{base_install_dir}
 %{base_install_dir}/bin/*
 %{base_install_dir}/dist/*
-%{base_install_dir}/docs/*
-%docdir %{base_install_dir}/docs/solr-core
 %{base_install_dir}/licenses/*
 %docdir %{base_install_dir}/licenses
 %{base_install_dir}/server/*
 %dir %{base_install_dir}/plugins
 %config(noreplace) %{_sysconfdir}/%{name}
-%doc README.txt LICENSE.txt  NOTICE.txt  CHANGES.txt docs/*
+%doc README.txt LICENSE.txt  NOTICE.txt  CHANGES.txt
 %defattr(-,%{solr_user},%{solr_group},-)
 %dir %{_localstatedir}/lib/%{name}
 %{_localstatedir}/lib/%{name}/solr.xml

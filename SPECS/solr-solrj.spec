@@ -38,9 +38,6 @@ rm -rf $RPM_BUILD_ROOT
 %{__mkdir} -p %{buildroot}%{solr_install_dir}/dist/solrj-lib
 %{__install} -p -m 644 dist/solrj-lib/*.jar %{buildroot}%{solr_install_dir}/dist/solrj-lib
 
-%{__mkdir} -p %{buildroot}%{solr_install_dir}/docs/solr-%{plugin_name}
-%{__cp} -R -p docs/solr-%{plugin_name}/* %{buildroot}%{solr_install_dir}/docs/solr-%{plugin_name}
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -48,10 +45,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root,-)
 %{solr_install_dir}/dist/solr-solrj-*.jar
 %{solr_install_dir}/dist/solrj-lib/*.jar
-%{solr_install_dir}/docs/solr-%{plugin_name}
-%docdir %{solr_install_dir}/docs/solr-%{plugin_name}
-
-%doc %{solr_install_dir}/docs/solr-%{plugin_name}/index.html
 
 %changelog
 * Wed May 24 2017 Chris Beer <chris@cbeer.info> - 6.5.1-0

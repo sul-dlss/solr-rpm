@@ -36,18 +36,12 @@ rm -rf $RPM_BUILD_ROOT
 %{__install} -p -m 755 %{plugin_source_dir}/lucene-libs/* %{buildroot}%{plugin_install_dir}
 %{__install} -p -m 755 dist/solr-%{plugin_name}-* %{buildroot}%{plugin_install_dir}
 
-%{__mkdir} -p %{buildroot}%{solr_install_dir}/docs/solr-%{plugin_name}
-%{__cp} -R -p docs/solr-%{plugin_name}/* %{buildroot}%{solr_install_dir}/docs/solr-%{plugin_name}
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(-,root,root,-)
 %{plugin_install_dir}/*
-%{solr_install_dir}/docs/solr-%{plugin_name}
-%docdir %{solr_install_dir}/docs/solr-%{plugin_name}
-%doc %{plugin_source_dir}/README.txt
 
 %changelog
 * Wed May 24 2017 Chris Beer <chris@cbeer.info> - 6.5.1-0

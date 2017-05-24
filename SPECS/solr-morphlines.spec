@@ -37,21 +37,12 @@ rm -rf $RPM_BUILD_ROOT
 %{__install} -p -m 755 dist/solr-%{plugin_name}-cell-* %{buildroot}%{plugin_install_dir}
 %{__install} -p -m 755 dist/solr-%{plugin_name}-core-* %{buildroot}%{plugin_install_dir}
 
-%{__mkdir} -p %{buildroot}%{solr_install_dir}/docs/solr-%{plugin_name}-cell
-%{__mkdir} -p %{buildroot}%{solr_install_dir}/docs/solr-%{plugin_name}-core
-%{__cp} -R -p docs/solr-%{plugin_name}-cell/* %{buildroot}%{solr_install_dir}/docs/solr-%{plugin_name}-cell
-%{__cp} -R -p docs/solr-%{plugin_name}-core/* %{buildroot}%{solr_install_dir}/docs/solr-%{plugin_name}-core
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(-,root,root,-)
 %{plugin_install_dir}/*
-%{solr_install_dir}/docs/solr-%{plugin_name}-cell
-%{solr_install_dir}/docs/solr-%{plugin_name}-core
-%docdir %{solr_install_dir}/docs/solr-%{plugin_name}-cell
-%docdir %{solr_install_dir}/docs/solr-%{plugin_name}-core
 %doc contrib/morphlines-cell/README.txt
 
 %changelog
