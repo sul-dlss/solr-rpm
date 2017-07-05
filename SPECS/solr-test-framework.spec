@@ -3,7 +3,7 @@
 %define plugin_name test-framework
 
 Name:           solr-%{plugin_name}
-Version:        6.5.1
+Version:        6.6.0
 Release:        0%{?dist}
 Summary:        A distributed, highly available, RESTful search engine
 
@@ -48,6 +48,9 @@ rm -rf $RPM_BUILD_ROOT
 %{solr_install_dir}/dist/test-framework/lucene-libs/*.jar
 
 %changelog
+* Wed Jul 5 2017 Chris Beer <chris@cbeer.info> - 6.6.0-0
+- Update to Solr 6.6.0
+
 * Wed May 24 2017 Chris Beer <chris@cbeer.info> - 6.5.1-0
 - Update to Solr 6.5.1
 

@@ -37,5 +37,8 @@ rm -rf $RPM_BUILD_ROOT
 %{plugin_install_dir}/*
 
 %changelog
+* Wed Jul 5 2017 Chris Beer <chris@cbeer.info> - 6.6.0-0
+- Update to Solr 6.6.0
+
 * Fri Aug 5 2016 Chris Beer <chris@cbeer.info> - 1.0.5
 - Package v1.0.5
