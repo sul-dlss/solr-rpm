@@ -35,7 +35,6 @@ rm -rf $RPM_BUILD_ROOT
 %{__mkdir} -p %{buildroot}%{solr_install_dir}/dist/test-framework
 %{__mkdir} -p %{buildroot}%{solr_install_dir}/dist/test-framework/lib
 %{__mkdir} -p %{buildroot}%{solr_install_dir}/dist/test-framework/lucene-libs
-%{__install} -p -m 644 dist/test-framework/README.txt %{buildroot}%{solr_install_dir}/dist/test-framework
 %{__install} -p -m 644 dist/test-framework/lib/*.jar %{buildroot}%{solr_install_dir}/dist/test-framework/lib
 %{__install} -p -m 644 dist/test-framework/lucene-libs/*.jar %{buildroot}%{solr_install_dir}/dist/test-framework/lucene-libs
 
