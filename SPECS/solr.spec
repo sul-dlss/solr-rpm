@@ -4,7 +4,7 @@
 %define solr_user solr
 
 Name:           solr
-Version:        7.4.0
+Version:        7.5.0
 Release:        0%{?dist}
 Summary:        A distributed, highly available, RESTful search engine
 
@@ -163,6 +163,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Sat Sep 24 2018 Chris Beer <chris@cbeer.info> - 7.5.0-0
+- Update to Solr 7.5.0
+
 * Sat Aug 4 2018 Chris Beer <chris@cbeer.info> - 7.4.0-0
 - Update to Solr 7.4.0
 
