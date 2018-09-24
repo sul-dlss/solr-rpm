@@ -15,7 +15,7 @@ Source0:        http://archive.apache.org/dist/lucene/solr/%{version}/solr-%{ver
 Source1:        init.d-solr
 Source2:        sysconfig-solr
 Patch0:         solr.xml.patch
-Patch1:         log4j.properties.patch
+Patch1:         log4j2.xml.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 Requires:       jpackage-utils
@@ -98,8 +98,8 @@ rm -rf $RPM_BUILD_ROOT
 %{__install} -p -m 644 server/solr/README.txt %{buildroot}%{_sysconfdir}/%{name}
 %{__install} -p -m 644 server/solr/solr.xml %{buildroot}%{_sysconfdir}/%{name}
 %{__install} -p -m 644 server/solr/zoo.cfg %{buildroot}%{_sysconfdir}/%{name}
-%{__install} -p -m 644 server/resources/log4j.properties %{buildroot}%{_sysconfdir}/%{name}
-ln -sf %{_sysconfdir}/%{name}/log4j.properties %{buildroot}%{base_install_dir}/server/resources/log4j.properties
+%{__install} -p -m 644 server/resources/log4j2.xml %{buildroot}%{_sysconfdir}/%{name}
+ln -sf %{_sysconfdir}/%{name}/log4j2.xml %{buildroot}%{base_install_dir}/server/resources/log4j2.xml
 
 %{__install} -p -m 644 server/resources/jetty-logging.properties %{buildroot}%{_sysconfdir}/%{name}
 ln -sf %{_sysconfdir}/%{name}/jetty-logging.properties %{buildroot}%{base_install_dir}/server/resources/jetty-logging.properties

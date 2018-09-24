@@ -1,0 +1,28 @@
+--- server/resources/log4j2.xml-orig	2018-08-07 09:33:11.000000000 -0700
++++ server/resources/log4j2.xml	2018-08-07 09:33:21.000000000 -0700
+@@ -38,7 +38,7 @@
+       </PatternLayout>
+       <Policies>
+         <OnStartupTriggeringPolicy />
+-        <SizeBasedTriggeringPolicy size="32 MB"/>
++        <SizeBasedTriggeringPolicy size="256 MB"/>
+       </Policies>
+       <DefaultRolloverStrategy max="10"/>
+     </RollingFile>
+@@ -54,7 +54,7 @@
+       </PatternLayout>
+       <Policies>
+         <OnStartupTriggeringPolicy />
+-        <SizeBasedTriggeringPolicy size="32 MB"/>
++        <SizeBasedTriggeringPolicy size="256 MB"/>
+       </Policies>
+       <DefaultRolloverStrategy max="10"/>
+     </RollingFile>
+@@ -70,7 +70,6 @@
+
+     <Root level="info">
+       <AppenderRef ref="RollingFile"/>
+-      <AppenderRef ref="STDOUT"/>
+     </Root>
+   </Loggers>
+ </Configuration>
