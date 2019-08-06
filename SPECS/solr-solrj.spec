@@ -3,7 +3,7 @@
 %define plugin_name solrj
 
 Name:           solr-%{plugin_name}
-Version:        7.6.0
+Version:        7.7.0
 Release:        0%{?dist}
 Summary:        A distributed, highly available, RESTful search engine
 
@@ -47,6 +47,9 @@ rm -rf $RPM_BUILD_ROOT
 %{solr_install_dir}/dist/solrj-lib/*.jar
 
 %changelog
+* Sat Feb 16 2019 Chris Beer <chris@cbeer.info> - 7.7.0-0
+- Update to Solr 7.7.0
+
 * Mon Dec 17 2018 Chris Beer <chris@cbeer.info> - 7.6.0-0
 - Update to Solr 7.6.0
 
