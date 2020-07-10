@@ -5,7 +5,7 @@
 %define plugin_source_dir contrib/%{plugin_name}
 
 Name:           solr-%{plugin_name}
-Version:        8.2.0
+Version:        8.5.2
 Release:        0%{?dist}
 Summary:        A distributed, highly available, RESTful search engine
 
@@ -43,6 +43,9 @@ rm -rf $RPM_BUILD_ROOT
 %doc %{plugin_source_dir}/README.txt
 
 %changelog
+* Thu Jul 9 2020 Chris Beer <chris@cbeer.info> - 8.5.2-0
+- Update to Solr 8.5.2
+
 * Thu Aug 10 2019 Chris Beer <chris@cbeer.info> - 8.2.0-0
 - Update to Solr 8.2.0
 

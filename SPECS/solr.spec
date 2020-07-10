@@ -4,7 +4,7 @@
 %define solr_user solr
 
 Name:           solr
-Version:        8.2.0
+Version:        8.5.2
 Release:        0%{?dist}
 Summary:        A distributed, highly available, RESTful search engine
 
@@ -14,8 +14,6 @@ URL:            http://lucene.apache.org/solr/
 Source0:        http://archive.apache.org/dist/lucene/solr/%{version}/solr-%{version}.tgz
 Source1:        init.d-solr
 Source2:        sysconfig-solr
-Patch0:         solr.xml.patch
-Patch1:         log4j2.xml.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 Requires:       jpackage-utils
@@ -33,9 +31,6 @@ A distributed, highly available, RESTful search engine
 
 %prep
 %setup -q -n %{name}-%{version}
-
-%patch0 -p0
-%patch1 -p0
 
 %build
 true
@@ -99,7 +94,9 @@ rm -rf $RPM_BUILD_ROOT
 %{__install} -p -m 644 server/solr/solr.xml %{buildroot}%{_sysconfdir}/%{name}
 %{__install} -p -m 644 server/solr/zoo.cfg %{buildroot}%{_sysconfdir}/%{name}
 %{__install} -p -m 644 server/resources/log4j2.xml %{buildroot}%{_sysconfdir}/%{name}
+%{__install} -p -m 644 server/resources/log4j2-console.xml %{buildroot}%{_sysconfdir}/%{name}
 ln -sf %{_sysconfdir}/%{name}/log4j2.xml %{buildroot}%{base_install_dir}/server/resources/log4j2.xml
+ln -sf %{_sysconfdir}/%{name}/log4j2-console.xml %{buildroot}%{base_install_dir}/server/resources/log4j2-console.xml
 
 %{__install} -p -m 644 server/resources/jetty-logging.properties %{buildroot}%{_sysconfdir}/%{name}
 ln -sf %{_sysconfdir}/%{name}/jetty-logging.properties %{buildroot}%{base_install_dir}/server/resources/jetty-logging.properties
@@ -163,12 +160,14 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Thu Jul 9 2020 Chris Beer <chris@cbeer.info> - 8.5.2-0
+- Update to Solr 8.5.2
+
 * Thu Aug 10 2019 Chris Beer <chris@cbeer.info> - 8.2.0-0
 - Update to Solr 8.2.0
 
 * Tue Aug 08 2019 Chris Beer <chris@cbeer.info> - 7.7.2-0
 - Update to Solr 7.7.2
-
 
 * Sat Feb 16 2019 Chris Beer <chris@cbeer.info> - 7.7.0-0
 - Update to Solr 7.7.0
