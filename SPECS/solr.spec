@@ -2,6 +2,7 @@
 %define base_install_dir %{_javadir}/%{name}
 %define solr_group solr
 %define solr_user solr
+%define __jar_repack 0
 
 Name:           solr
 Version:        8.5.2
@@ -12,9 +13,11 @@ Group:          System Environment/Daemons
 License:        ASL 2.0
 URL:            http://lucene.apache.org/solr/
 Source0:        http://archive.apache.org/dist/lucene/solr/%{version}/solr-%{version}.tgz
-Source1:        init.d-solr
+Source1:        systemd-solr
 Source2:        sysconfig-solr
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
+BuildArch:      noarch
+BuildRequires:  systemd
 
 Requires:       jpackage-utils
 Requires:       jre >= 1.7.0
@@ -114,9 +117,9 @@ ln -sf %{_localstatedir}/log/%{name} %{buildroot}%{base_install_dir}/server/logs
 %{__mkdir} -p %{buildroot}%{base_install_dir}/plugins
 
 # sysconfig and init
-%{__mkdir} -p %{buildroot}%{_sysconfdir}/rc.d/init.d
+%{__mkdir} -p %{buildroot}%{_unitdir}
 %{__mkdir} -p %{buildroot}%{_sysconfdir}/sysconfig
-%{__install} -m 755 %{SOURCE1} %{buildroot}%{_sysconfdir}/rc.d/init.d/%{name}
+%{__install} -m 755 %{SOURCE1} %{buildroot}%{_unitdir}/%{name}.service
 %{__install} -m 755 %{SOURCE2} %{buildroot}%{_sysconfdir}/sysconfig/%{name}
 
 %{__mkdir} -p %{buildroot}%{_localstatedir}/run/%{name}
@@ -126,21 +129,12 @@ ln -sf %{_localstatedir}/log/%{name} %{buildroot}%{base_install_dir}/server/logs
 getent group %{solr_group} >/dev/null || groupadd -r %{solr_group}
 getent passwd %{solr_user} >/dev/null || /usr/sbin/useradd --comment "Solr Daemon User" --shell /sbin/nologin -M -r -g %{solr_group} --home %{base_install_dir} %{solr_user}
 
-%post
-/sbin/chkconfig --add %{name}
-
-%preun
-if [ $1 -eq 0 ]; then
-  /sbin/service %{name} stop >/dev/null 2>&1
-  /sbin/chkconfig --del %{name}
-fi
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(-,root,root,-)
-%{_sysconfdir}/rc.d/init.d/%{name}
+%{_unitdir}/%{name}.service
 %config(noreplace) %{_sysconfdir}/sysconfig/%{name}
 %dir %{base_install_dir}
 %{base_install_dir}/bin/*
@@ -163,10 +157,10 @@ rm -rf $RPM_BUILD_ROOT
 * Thu Jul 9 2020 Chris Beer <chris@cbeer.info> - 8.5.2-0
 - Update to Solr 8.5.2
 
-* Thu Aug 10 2019 Chris Beer <chris@cbeer.info> - 8.2.0-0
+* Sat Aug 10 2019 Chris Beer <chris@cbeer.info> - 8.2.0-0
 - Update to Solr 8.2.0
 
-* Tue Aug 08 2019 Chris Beer <chris@cbeer.info> - 7.7.2-0
+* Thu Aug 08 2019 Chris Beer <chris@cbeer.info> - 7.7.2-0
 - Update to Solr 7.7.2
 
 * Sat Feb 16 2019 Chris Beer <chris@cbeer.info> - 7.7.0-0
@@ -175,7 +169,7 @@ rm -rf $RPM_BUILD_ROOT
 * Mon Dec 17 2018 Chris Beer <chris@cbeer.info> - 7.6.0-0
 - Update to Solr 7.6.0
 
-* Sat Sep 24 2018 Chris Beer <chris@cbeer.info> - 7.5.0-0
+* Mon Sep 24 2018 Chris Beer <chris@cbeer.info> - 7.5.0-0
 - Update to Solr 7.5.0
 
 * Sat Aug 4 2018 Chris Beer <chris@cbeer.info> - 7.4.0-0
@@ -193,7 +187,7 @@ rm -rf $RPM_BUILD_ROOT
 * Wed May 24 2017 Chris Beer <chris@cbeer.info> - 6.5.1-0
 - Update to Solr 6.5.1
 
-* Sun Aug 27 2016 Chris Beer <chris@cbeer.info> - 6.5.1-0
+* Sat Aug 27 2016 Chris Beer <chris@cbeer.info> - 6.5.1-0
 - Update to Solr 6.2.0
 
 * Wed Jun 29 2016 Chris Beer <chris@cbeer.info> - 6.1.0-0

@@ -1,8 +1,9 @@
 %define debug_package %{nil}
 %define solr_install_dir %{_javadir}/solr
 %define plugin_install_dir %{solr_install_dir}/plugins
-%define plugin_name uima
+%define plugin_name ltr
 %define plugin_source_dir contrib/%{plugin_name}
+%define __jar_repack 0
 
 Name:           solr-%{plugin_name}
 Version:        8.5.2
@@ -14,7 +15,7 @@ License:        ASL 2.0
 URL:            http://lucene.apache.org/solr/
 Source0:        http://archive.apache.org/dist/lucene/solr/%{version}/solr-%{version}.tgz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
-
+BuildArch:      noarch
 Requires:       solr >= %{version}
 
 Provides: %{name}
@@ -32,8 +33,6 @@ true
 rm -rf $RPM_BUILD_ROOT
 
 %{__mkdir} -p %{buildroot}%{plugin_install_dir}
-%{__install} -p -m 755 %{plugin_source_dir}/lib/* %{buildroot}%{plugin_install_dir}
-%{__install} -p -m 755 %{plugin_source_dir}/lucene-libs/* %{buildroot}%{plugin_install_dir}
 %{__install} -p -m 755 dist/solr-%{plugin_name}-* %{buildroot}%{plugin_install_dir}
 
 %clean
@@ -42,6 +41,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(-,root,root,-)
 %{plugin_install_dir}/*
+%doc %{plugin_source_dir}/README.txt
 
 %changelog
 * Thu Jul 9 2020 Chris Beer <chris@cbeer.info> - 8.5.2-0

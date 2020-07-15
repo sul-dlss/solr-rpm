@@ -1,0 +1,17 @@
+[Unit]
+Description=Apache SOLR
+
+[Service]
+Type=forking
+User=solr
+Group=solr
+EnvironmentFile=/etc/sysconfig/solr
+ExecStart=/usr/share/java/solr/bin/solr start
+ExecStop=/usr/share/java/solr/bin/solr stop
+Restart=on-failure
+LimitNOFILE=65000
+LimitNPROC=65000
+TimeoutSec=180s
+
+[Install]
+WantedBy=multi-user.target
