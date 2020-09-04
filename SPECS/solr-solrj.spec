@@ -4,7 +4,7 @@
 %define __jar_repack 0
 
 Name:           solr-%{plugin_name}
-Version:        8.6.1
+Version:        8.6.2
 Release:        0%{?dist}
 Summary:        A distributed, highly available, RESTful search engine
 
@@ -48,6 +48,9 @@ rm -rf $RPM_BUILD_ROOT
 %{solr_install_dir}/dist/solrj-lib/*.jar
 
 %changelog
+* Fri Sep 4 2020 Chris Beer <chris@cbeer.info> - 8.6.2-0
+- Update to Solr 8.6.2
+
 * Fri Aug 14 2020 Chris Beer <chris@cbeer.info> - 8.6.1-0
 - Update to Solr 8.6.1
 
